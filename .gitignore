@@ -229,3 +229,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.jmconfig
+/src/AIGames.Challenger/App.config

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<AIGamesCompetitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<AIGamesCompetition name="Warlight" key="warlight-ai-challenge" />
+	<AIGamesCompetition name="Heads up Omaha" key="heads-up-omaha" />
+	<AIGamesCompetition name="Warlight 2" key="warlight-ai-challenge-2" />
+	<AIGamesCompetition name="Texas Hold ’em" key="warlight-ai-challenge-2" />
+	<AIGamesCompetition name="Block Battle" key="ai-block-battle" />
+	<AIGamesCompetition name="For In A Row" key="four-in-a-row" />
+</AIGamesCompetitions>
