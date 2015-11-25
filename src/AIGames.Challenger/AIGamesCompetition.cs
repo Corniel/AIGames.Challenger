@@ -32,6 +32,16 @@ namespace AIGames.Challenger
 			return new Uri(url);
 		}
 
+		/// <summary>Gets the URL to the leaderboard for this competition.</summary>
+		public Uri GetLeaderboard()
+		{
+			var url = String.Format(CultureInfo.InvariantCulture,
+				"http://theaigames.com/competitions/{0}/leaderboard/global/a/",
+				UrlKey);
+
+			return new Uri(url);
+		}
+
 		[DebuggerBrowsable(DebuggerBrowsableState.Never), ExcludeFromCodeCoverage]
 		private string DebuggerDisplay { get { return String.Format("Name: {0}, Key: {1}", DisplayName, UrlKey); } }
 	}

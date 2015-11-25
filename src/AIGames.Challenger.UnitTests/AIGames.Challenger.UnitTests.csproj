@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="AIGamesCompetitionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebDriverWrapperTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

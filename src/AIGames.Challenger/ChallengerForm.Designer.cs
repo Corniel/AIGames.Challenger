@@ -41,22 +41,22 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
-			// txtOpponents
+			// opponentsTextBox
 			// 
 			this.opponentsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.opponentsTextBox.Location = new System.Drawing.Point(0, 82);
-			this.opponentsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.opponentsTextBox.Margin = new System.Windows.Forms.Padding(2);
 			this.opponentsTextBox.Multiline = true;
-			this.opponentsTextBox.Name = "txtOpponents";
-			this.opponentsTextBox.Size = new System.Drawing.Size(291, 216);
+			this.opponentsTextBox.Name = "opponentsTextBox";
+			this.opponentsTextBox.Size = new System.Drawing.Size(291, 379);
 			this.opponentsTextBox.TabIndex = 0;
 			// 
 			// btnChallenge
 			// 
 			this.btnChallenge.Location = new System.Drawing.Point(9, 10);
-			this.btnChallenge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnChallenge.Margin = new System.Windows.Forms.Padding(2);
 			this.btnChallenge.Name = "btnChallenge";
 			this.btnChallenge.Size = new System.Drawing.Size(74, 34);
 			this.btnChallenge.TabIndex = 1;
@@ -67,7 +67,7 @@
 			// btnPause
 			// 
 			this.btnPause.Location = new System.Drawing.Point(87, 10);
-			this.btnPause.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btnPause.Margin = new System.Windows.Forms.Padding(2);
 			this.btnPause.Name = "btnPause";
 			this.btnPause.Size = new System.Drawing.Size(71, 34);
 			this.btnPause.TabIndex = 2;
@@ -75,11 +75,11 @@
 			this.btnPause.UseVisualStyleBackColor = true;
 			this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
 			// 
-			// txtInterval
+			// intervalTextBox
 			// 
 			this.intervalTextBox.Location = new System.Drawing.Point(163, 10);
-			this.intervalTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.intervalTextBox.Name = "txtInterval";
+			this.intervalTextBox.Margin = new System.Windows.Forms.Padding(2);
+			this.intervalTextBox.Name = "intervalTextBox";
 			this.intervalTextBox.Size = new System.Drawing.Size(76, 20);
 			this.intervalTextBox.TabIndex = 3;
 			this.intervalTextBox.Text = "310";
@@ -101,12 +101,12 @@
 			// 
 			this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
 			// 
-			// comboBox1
+			// competitionsComboBox
 			// 
 			this.competitionsComboBox.FormattingEnabled = true;
 			this.competitionsComboBox.Location = new System.Drawing.Point(87, 49);
-			this.competitionsComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.competitionsComboBox.Name = "comboBox1";
+			this.competitionsComboBox.Margin = new System.Windows.Forms.Padding(2);
+			this.competitionsComboBox.Name = "competitionsComboBox";
 			this.competitionsComboBox.Size = new System.Drawing.Size(150, 21);
 			this.competitionsComboBox.TabIndex = 5;
 			// 
@@ -124,7 +124,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(285, 296);
+			this.ClientSize = new System.Drawing.Size(285, 459);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.competitionsComboBox);
 			this.Controls.Add(this.label1);
@@ -133,7 +133,7 @@
 			this.Controls.Add(this.btnChallenge);
 			this.Controls.Add(this.opponentsTextBox);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "ChallengerForm";
 			this.Text = "Challenge bots";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChallengerForm_FormClosing);

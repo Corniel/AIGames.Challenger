@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIGamesBot.cs" />
     <Compile Include="AIGamesCompetition.cs" />
     <Compile Include="AppConfig.cs" />
     <Compile Include="ChallengerForm.cs">
