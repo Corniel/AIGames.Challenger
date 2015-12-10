@@ -57,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AIGames.Core\AIGames.Core.csproj">
+      <Project>{f3f28754-e46a-4e1d-a7e9-054bf509a22e}</Project>
+      <Name>AIGames.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AIGames.Challenger\AIGames.Challenger.csproj">
       <Project>{d844762b-906b-4b28-b462-6a49d4225e72}</Project>
       <Name>AIGames.Challenger</Name>

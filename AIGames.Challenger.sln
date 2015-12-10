@@ -3,16 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.Challenger", "src\AIGames.Challenger\AIGames.Challenger.csproj", "{D844762B-906B-4B28-B462-6A49D4225E72}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.Challenger.UnitTests", "src\AIGames.Challenger.UnitTests\AIGames.Challenger.UnitTests.csproj", "{AB561477-9EAB-4AEB-9361-88CDCAC3667E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{FA7F2C96-0D08-4B4B-AE17-1684ED6AA191}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		AIGames.Challenger.license.md = AIGames.Challenger.license.md
 		readme.md = readme.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.Challenger", "src\AIGames.Challenger\AIGames.Challenger.csproj", "{D844762B-906B-4B28-B462-6A49D4225E72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.Core", "src\AIGames.Core\AIGames.Core.csproj", "{F3F28754-E46A-4E1D-A7E9-054BF509A22E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.UnitTests", "src\AIGames.UnitTests\AIGames.UnitTests.csproj", "{AB561477-9EAB-4AEB-9361-88CDCAC3667E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{D844762B-906B-4B28-B462-6A49D4225E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D844762B-906B-4B28-B462-6A49D4225E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D844762B-906B-4B28-B462-6A49D4225E72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3F28754-E46A-4E1D-A7E9-054BF509A22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3F28754-E46A-4E1D-A7E9-054BF509A22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3F28754-E46A-4E1D-A7E9-054BF509A22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3F28754-E46A-4E1D-A7E9-054BF509A22E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB561477-9EAB-4AEB-9361-88CDCAC3667E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB561477-9EAB-4AEB-9361-88CDCAC3667E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB561477-9EAB-4AEB-9361-88CDCAC3667E}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -3,7 +3,7 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 
-namespace AIGames.Challenger
+namespace AIGames
 {
 	/// <summary>A small wrapper around the Selenium WebDriver.</summary>
 	public class WebDriverWrapper
@@ -80,6 +80,7 @@ namespace AIGames.Challenger
 		/// <summary>Quits the driver.</summary>
 		public void Quit() { Driver.Quit(); }
 
+		/// <summary>Gets the driver for Google Chrome.</summary>
 		public static WebDriverWrapper GetChrome()
 		{
 			return new WebDriverWrapper(new ChromeDriver());

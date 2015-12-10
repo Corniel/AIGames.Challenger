@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace AIGames.Challenger
+namespace AIGames
 {
 	[Serializable, DebuggerDisplay("{DebuggerDisplay}")]
 	public class AIGamesBot

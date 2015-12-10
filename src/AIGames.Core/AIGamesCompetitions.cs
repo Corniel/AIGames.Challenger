@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace AIGames.Challenger
+namespace AIGames
 {
 	[Serializable, XmlRoot("AIGamesCompetitions")]
 	public class AIGamesCompetitions : List<AIGamesCompetition>
@@ -16,7 +16,7 @@ namespace AIGames.Challenger
 				if (s_All == null)
 				{
 					s_All = Load(typeof(AIGamesCompetitions).Assembly.
-					GetManifestResourceStream("AIGames.Challenger.AIGamesCompetitions.xml"));
+					GetManifestResourceStream("AIGames.AIGamesCompetitions.xml"));
 				}
 				return s_All;
 			}

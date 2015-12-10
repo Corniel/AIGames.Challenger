@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml.Serialization;
 
-namespace AIGames.Challenger
+namespace AIGames
 {
 	/// <summary>Represents AI-Games competition data.</summary>
 	[Serializable, DebuggerDisplay("{DebuggerDisplay}")]
