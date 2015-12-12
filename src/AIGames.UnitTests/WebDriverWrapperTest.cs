@@ -1,7 +1,8 @@
 ﻿using NUnit.Framework;
+using System;
 using System.Linq;
 
-namespace AIGames.Challenger.UnitTests
+namespace AIGames.UnitTests
 {
 	[TestFixture]
 	public class WebDriverWrapperTest
@@ -10,7 +11,7 @@ namespace AIGames.Challenger.UnitTests
 		public void GetLeaderboard_BlockBattle_MultipleElements()
 		{
 			var driver = WebDriverWrapper.GetChrome();
-			var result = driver.GetLeaderboard(AIGamesCompetitions.All[4]).ToList();
+			var result = driver.GetLeaderboard(AIGamesCompetitions.All["FourInARow"]).ToList();
 
 			Assert.IsTrue(result.Any());
 		}

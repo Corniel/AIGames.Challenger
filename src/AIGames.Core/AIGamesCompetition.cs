@@ -27,12 +27,44 @@ namespace AIGames
 			var url = String.Format(CultureInfo.InvariantCulture,
 				"http://theaigames.com/competitions/{0}/game/challenge/{1}/new",
 				UrlKey,
-				playerName.ToLowerInvariant());
+				playerName);
 
 			return new Uri(url);
 		}
 
-		/// <summary>Gets the URL to the leaderboard for this competition.</summary>
+		/// <summary>Gets the URL to the game log of a player.</summary>
+		/// <param name="playerName">
+		/// The name of the player
+		/// </param>
+		/// <param name="page">
+		/// The page to visit.
+		/// </param>
+		public Uri GetGameListUrl(string playerName, int page)
+		{
+			var url = String.Format(CultureInfo.InvariantCulture,
+				"http://theaigames.com/competitions/{0}/game-log/{1}/{2}",
+				UrlKey,
+				playerName,
+				page);
+
+			return new Uri(url);
+		}
+
+		/// <summary>Gets the URL to the dump of a game.</summary>
+		/// <param name="gameid">
+		/// The identifier of a game.
+		/// </param>
+		public Uri GetGameDumpUrl(string gameid)
+		{
+			var url = String.Format(CultureInfo.InvariantCulture,
+				"http://theaigames.com/competitions/{0}/games/{1}/dump",
+				UrlKey,
+				gameid);
+
+			return new Uri(url);
+		}
+
+		/// <summary>Gets the URL to the leader board for this competition.</summary>
 		public Uri GetLeaderboard()
 		{
 			var url = String.Format(CultureInfo.InvariantCulture,
@@ -42,7 +74,21 @@ namespace AIGames
 			return new Uri(url);
 		}
 
+		/// <summary>returns true if the string matches the display name or URL key.</summary>
+		internal bool IsMatch(string str)
+		{
+			if (String.IsNullOrEmpty(str)) { return false; }
+			var match = str.Replace(" ", "").Trim().ToUpperInvariant();
+
+			var dp = DisplayName.Replace(" ", "").Trim().ToUpperInvariant();
+			var key = UrlKey.Replace(" ", "").Trim().ToUpperInvariant();
+
+			return match == dp || match == key;
+		}
+
 		[DebuggerBrowsable(DebuggerBrowsableState.Never), ExcludeFromCodeCoverage]
 		private string DebuggerDisplay { get { return String.Format("Name: {0}, Key: {1}", DisplayName, UrlKey); } }
+
+		
 	}
 }

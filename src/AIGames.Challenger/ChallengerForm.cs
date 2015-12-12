@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIGames.Configuration;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,10 @@ namespace AIGames.Challenger
 			WebDriver.SignIn();
 
 			competitionsComboBox.Items.AddRange(AIGamesCompetitions.All.Select(comp => ComboboxICompetitiontem.Create(comp)).ToArray());
-			competitionsComboBox.Text = AppConfig.DefaultCompetition;
+			competitionsComboBox.Text = AppConfig.Competition_Default;
 			if (String.IsNullOrEmpty(competitionsComboBox.Text))
 			{
-				competitionsComboBox.Text =AIGamesCompetitions.All.Default.DisplayName;
+				competitionsComboBox.Text = AIGamesCompetitions.All.Default.DisplayName;
 			}
 		}
 

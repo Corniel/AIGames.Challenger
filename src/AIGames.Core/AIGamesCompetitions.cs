@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AIGames.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace AIGames
@@ -23,8 +25,25 @@ namespace AIGames
 		}
 		private static AIGamesCompetitions s_All;
 
+		/// <summary>Gets a competition based on a name.</summary>
+		public AIGamesCompetition this[string name]
+		{
+			get
+			{
+				return this.FirstOrDefault(comp => comp.IsMatch(name));
+			}
+		}
+
 		/// <summary>Gets the default AI-Games competition.</summary>
-		public AIGamesCompetition Default { get { return Count == 0 ? null : this[Count - 1]; } }
+		public AIGamesCompetition Default
+		{
+			get
+			{
+				var def = this[AppConfig.Competition_Default];
+				if (def == null) { def = this.LastOrDefault(); }
+				return def;
+			}
+		}
 
 		#region I/O
 

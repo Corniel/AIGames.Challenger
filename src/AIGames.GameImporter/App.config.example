@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="Competition.Default" value ="Four In A Row"/>
+		<add key="Bot.Name" value ="Daltons"/>
+		<add key="Games.RootDir.Dump" value ="C:\Code\AIGames.Challenger\games"/>
+	</appSettings>
+</configuration>
