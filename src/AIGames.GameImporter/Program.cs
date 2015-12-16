@@ -29,6 +29,7 @@ namespace AIGames.GameImporter
 					{
 						break;
 					}
+					games.Add(game);
 				}
 				games.Save(file);
 				Console.WriteLine("Saved {0} game results.", games.Count);
