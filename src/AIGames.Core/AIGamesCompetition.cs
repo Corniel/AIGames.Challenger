@@ -27,7 +27,7 @@ namespace AIGames
 			var url = String.Format(CultureInfo.InvariantCulture,
 				"http://theaigames.com/competitions/{0}/game/challenge/{1}/new",
 				UrlKey,
-				playerName);
+				playerName.ToLowerInvariant());
 
 			return new Uri(url);
 		}
