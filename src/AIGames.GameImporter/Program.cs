@@ -2,7 +2,6 @@
 using AIGames.Data;
 using System;
 using System.Diagnostics;
-using System.IO;
 
 namespace AIGames.GameImporter
 {
@@ -10,9 +9,6 @@ namespace AIGames.GameImporter
 	{
 		static void Main(string[] args)
 		{
-			var file = new FileInfo(@"c:\temp\games.xml");
-			AIGameResults games = AIGameResults.Load(file);
-
 			using (var driver = WebDriverWrapper.GetChrome())
 			{
 				driver.SignIn();
@@ -20,6 +16,8 @@ namespace AIGames.GameImporter
 				Console.ReadLine();
 
 				var competition = AIGamesCompetitions.All.Default;
+
+				AIGameResults games = AIGameResults.Load(competition);
 
 				var sw = Stopwatch.StartNew();
 
@@ -31,7 +29,7 @@ namespace AIGames.GameImporter
 					}
 					games.Add(game);
 				}
-				games.Save(file);
+				games.Save(competition);
 				Console.WriteLine("Saved {0} game results.", games.Count);
 
 				var saved = 0;
