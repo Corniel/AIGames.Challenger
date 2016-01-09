@@ -3,7 +3,7 @@
 	<AIGamesCompetition name="Warlight" key="warlight-ai-challenge" />
 	<AIGamesCompetition name="Heads up Omaha" key="heads-up-omaha" />
 	<AIGamesCompetition name="Warlight 2" key="warlight-ai-challenge-2" />
-	<AIGamesCompetition name="Texas Hold em" key="warlight-ai-challenge-2" />
+	<AIGamesCompetition name="Texas Hold em" key="texas-hold-em" />
 	<AIGamesCompetition name="Block Battle" key="ai-block-battle" />
 	<AIGamesCompetition name="Four In A Row" key="four-in-a-row" />
 </AIGamesCompetitions>
