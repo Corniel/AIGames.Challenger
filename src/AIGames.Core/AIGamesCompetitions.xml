@@ -6,4 +6,5 @@
 	<AIGamesCompetition name="Texas Hold em" key="texas-hold-em" />
 	<AIGamesCompetition name="Block Battle" key="ai-block-battle" />
 	<AIGamesCompetition name="Four In A Row" key="four-in-a-row" />
+	<AIGamesCompetition name="Ultimate Tic-tac-toe" key="ultimate-tic-tac-toe" />
 </AIGamesCompetitions>
