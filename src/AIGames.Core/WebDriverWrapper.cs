@@ -80,25 +80,6 @@ namespace AIGames
 			}
 		}
 		
-		/// <summary>Get all bots on the leader board for a given competition.</summary>
-		public IEnumerable<AIGamesBot> GetLeaderboard(AIGamesCompetition competition)
-		{
-			if (competition == null) { throw new ArgumentNullException("competition"); }
-			Driver.Url = competition.GetLeaderboard().ToString();
-
-			var html = new HtmlDocument();
-			html.LoadHtml(Driver.PageSource);
-			var table = html.DocumentNode.SelectSingleNode("//table[@id='leaderboard-table']");
-
-			if (table == null) { yield break; }
-
-			foreach (var row in table.SelectNodes("//tr[@class='row-table']"))
-			{
-				var bot = AIGamesBot.FromRow(row);
-				yield return bot;
-			}
-		}
-
 		/// <summary>Saves the game dump for a specified game.</summary>
 		public bool SaveGameDump(AIGamesCompetition competition, AIGameResult game)
 		{
