@@ -1,11 +1,6 @@
 ﻿using AIGames.Data;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AIGames.Challenger.UnitTests.Data
 {
@@ -17,7 +12,7 @@ namespace AIGames.Challenger.UnitTests.Data
 		{
 			using (var stream = new MemoryStream())
 			{
-				AIGameDump.Save(Files.GameDump0, stream);
+				AIGameDump.Save(stream, Files.GameDump0);
 			}
 		}
 	}

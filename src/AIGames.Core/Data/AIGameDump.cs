@@ -1,30 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AIGames.Configuration;
+using System;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AIGames.Data
 {
-	public class AIGameDump
+	public static class AIGameDump
 	{
-		public static void Save(AIGamesCompetition competition, AIGameResult game, DirectoryInfo root)
+		public static Stream Load(AIGamesCompetition competition, AIGameResult game)
 		{
 			if (competition == null) { throw new ArgumentNullException("competition"); }
 			if (game == null) { throw new ArgumentNullException("game"); }
-			if (root == null) { throw new ArgumentNullException("root"); }
 
-			var location = Path.Combine(root.FullName, competition.UrlKey, String.Format("{0}.dat", game.Id));
-
-			
-
+			var location = GetLocation(competition, game);
+			return new FileStream(location.FullName , FileMode.Open, FileAccess.Read);
 		}
-
-		public static void Save(string code, Stream stream)
+		
+		public static void Save(Stream stream, string code)
 		{
 			if (stream == null) { throw new ArgumentNullException("stream"); }
-			if (String.IsNullOrEmpty(code)) { throw new ArgumentNullException("code"); }
+			if (string.IsNullOrEmpty(code)) { throw new ArgumentNullException("code"); }
 
 			var writer = new StreamWriter(stream);
 			var buffer = new StringBuilder();
@@ -65,6 +60,11 @@ namespace AIGames.Data
 			}
 			writer.WriteLine(buffer.ToString());
 			writer.Flush();
+		}
+
+		private static FileInfo GetLocation(AIGamesCompetition competition, AIGameResult game)
+		{
+			return new FileInfo(Path.Combine(AppConfig.Games_RootDir_Dump.FullName, competition.UrlKey, string.Format("{0}.dat", game.Id)));
 		}
 	}
 }

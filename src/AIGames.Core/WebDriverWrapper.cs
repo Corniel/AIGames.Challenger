@@ -1,5 +1,4 @@
-﻿using AIGames.Configuration;
-using AIGames.Data;
+﻿using AIGames.Data;
 using HtmlAgilityPack;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -50,7 +49,7 @@ namespace AIGames
 		public IEnumerable<AIGameResult> GetGames(AIGamesCompetition competition, string playerName)
 		{
 			if (competition == null) { throw new ArgumentNullException("competition"); }
-			if (String.IsNullOrEmpty(playerName)) { throw new ArgumentNullException("playerName"); }
+			if (string.IsNullOrEmpty(playerName)) { throw new ArgumentNullException("playerName"); }
 
 			var page = 0;
 			var count = 0;
@@ -86,7 +85,7 @@ namespace AIGames
 			if (competition == null) { throw new ArgumentNullException("competition"); }
 			if (game == null) { throw new ArgumentNullException("game"); }
 
-			var dir = new DirectoryInfo(Path.Combine(AppConfig.Games_RootDir_Dump.FullName, competition.UrlKey));
+			var dir = competition.GetGameDumpDirectory();
 			if (!dir.Exists) { dir.Create(); }
 
 			var dump = new FileInfo(Path.Combine(dir.FullName, String.Format("{0}.log", game.Id)));
@@ -103,7 +102,7 @@ namespace AIGames
 
 			using (var stream = dump.OpenWrite())
 			{
-				AIGameDump.Save(code, stream);
+				AIGameDump.Save(stream, code);
 			}
 			return true;
 		}

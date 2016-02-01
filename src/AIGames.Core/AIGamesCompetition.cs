@@ -1,7 +1,9 @@
-﻿using System;
+﻿using AIGames.Configuration;
+using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace AIGames
@@ -62,6 +64,12 @@ namespace AIGames
 				gameid);
 
 			return new Uri(url);
+		}
+
+		/// <summary>Gets the directory where the game dumbs are stored.</summary>
+		public DirectoryInfo GetGameDumpDirectory()
+		{
+			return new DirectoryInfo(Path.Combine(AppConfig.Games_RootDir_Dump.FullName, UrlKey));
 		}
 
 		/// <summary>Gets the URL to the leader board for this competition.</summary>
