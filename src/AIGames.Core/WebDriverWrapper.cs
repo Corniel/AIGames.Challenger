@@ -88,7 +88,7 @@ namespace AIGames
 			var dir = competition.GetGameDumpDirectory();
 			if (!dir.Exists) { dir.Create(); }
 
-			var dump = new FileInfo(Path.Combine(dir.FullName, String.Format("{0}.log", game.Id)));
+			var dump = AIGameDump.GetLocation(competition, game);
 			if (dump.Exists) { return false; }
 
 			Driver.Url = competition.GetGameDumpUrl(game.Id).ToString();

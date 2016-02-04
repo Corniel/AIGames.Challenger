@@ -62,9 +62,9 @@ namespace AIGames.Data
 			writer.Flush();
 		}
 
-		private static FileInfo GetLocation(AIGamesCompetition competition, AIGameResult game)
+		public static FileInfo GetLocation(AIGamesCompetition competition, AIGameResult game)
 		{
-			return new FileInfo(Path.Combine(AppConfig.Games_RootDir_Dump.FullName, competition.UrlKey, string.Format("{0}.dat", game.Id)));
+			return new FileInfo(Path.Combine(AppConfig.Games_RootDir_Dump.FullName, competition.UrlKey, string.Format("{0}.log", game.Id)));
 		}
 	}
 }
