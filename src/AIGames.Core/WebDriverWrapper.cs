@@ -46,6 +46,12 @@ namespace AIGames
 		}
 
 		/// <summary>Gets the game list as <see cref="HtmlAgilityPack.HtmlNode"/>.</summary>
+		public IEnumerable<AIGameResult> GetGames(AIGamesCompetition competition)
+		{
+			return GetGames(competition, "a");
+		}
+
+		/// <summary>Gets the game list as <see cref="HtmlAgilityPack.HtmlNode"/>.</summary>
 		public IEnumerable<AIGameResult> GetGames(AIGamesCompetition competition, string playerName)
 		{
 			if (competition == null) { throw new ArgumentNullException("competition"); }

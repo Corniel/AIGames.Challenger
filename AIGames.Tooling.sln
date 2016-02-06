@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{FA7F2C96-0D08-4B4B-AE17-1684ED6AA191}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		AIGames.Challenger.license.md = AIGames.Challenger.license.md
+		AIGames.Tooling.license.md = AIGames.Tooling.license.md
 		readme.md = readme.md
 	EndProjectSection
 EndProject
@@ -17,6 +17,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.UnitTests", "src\AIGames.UnitTests\AIGames.UnitTests.csproj", "{AB561477-9EAB-4AEB-9361-88CDCAC3667E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIGames.GameImporter", "src\AIGames.GameImporter\AIGames.GameImporter.csproj", "{DB0BE48D-4D0A-40B6-8B3B-CC03434D393A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2B0B4BD5-CBAB-4290-9C87-053102D4C8FA}"
+	ProjectSection(SolutionItems) = preProject
+		src\Shared\AssemblyInfo.Shared.cs = src\Shared\AssemblyInfo.Shared.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,5 +48,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2B0B4BD5-CBAB-4290-9C87-053102D4C8FA} = {FA7F2C96-0D08-4B4B-AE17-1684ED6AA191}
 	EndGlobalSection
 EndGlobal

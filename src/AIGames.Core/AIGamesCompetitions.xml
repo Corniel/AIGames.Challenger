@@ -4,7 +4,7 @@
 	<AIGamesCompetition name="Heads up Omaha" key="heads-up-omaha" />
 	<AIGamesCompetition name="Warlight 2" key="warlight-ai-challenge-2" />
 	<AIGamesCompetition name="Texas Hold em" key="texas-hold-em" />
-	<AIGamesCompetition name="Block Battle" key="ai-block-battle" />
+	<AIGamesCompetition name="Block Battle" key="ai-block-battle" symmetric="true" />
 	<AIGamesCompetition name="Four In A Row" key="four-in-a-row" />
 	<AIGamesCompetition name="Ultimate Tic-tac-toe" key="ultimate-tic-tac-toe" />
 </AIGamesCompetitions>

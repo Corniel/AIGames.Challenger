@@ -20,6 +20,13 @@ namespace AIGames
 		[XmlAttribute("key")]
 		public string UrlKey { get; set; }
 
+		/// <summary>Returns if the game is symmetric, otherwise false.</summary>
+		/// <remarks>
+		/// E.a.: if there is no advantage for player 1 or player 2.
+		/// </remarks>
+		[XmlAttribute("symmetric")]
+		public bool IsSymmetric { get; set; }
+
 		/// <summary>Gets the URL to challenge an opponent.</summary>
 		/// <param name="playerName">The name of the player</param>
 		public Uri GetChallengeUrl(string playerName)
