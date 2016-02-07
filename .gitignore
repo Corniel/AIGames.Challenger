@@ -232,6 +232,6 @@ $RECYCLE.BIN/
 *.jmconfig
 
 # Solution specific
-*.config
+App.config
 /app
 /games
