@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="Competition.Default" value ="Four In A Row"/>
+		<add key="Games.RootDir.Dump" value =".\AIGames.Challenger\results"/>
+	</appSettings>
+</configuration>

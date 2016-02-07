@@ -14,6 +14,13 @@ namespace AIGames.Data
 	[DebuggerDisplay("{DebuggerDisplay}")]
 	public partial class AIGameResult
 	{
+		public enum Score
+		{
+			Win,
+			Draw,
+			Lose,
+		}
+
 		/// <summary>Initializes a new AI Game.</summary>
 		public AIGameResult()
 		{
@@ -31,6 +38,16 @@ namespace AIGames.Data
 		/// <summary>Gets bot 2.</summary>
 		public AIGameResult.Bot Bot2 { get; set; }
 
+		public Score Outcome
+		{
+			get
+			{
+				if (Bot1.Score == 1) { return Score.Win; }
+				if (Bot2.Score == 1) { return Score.Lose; }
+				return Score.Draw;
+			}
+		}
+
 		/// <summary>Date on which the game was played.</summary>
 		public Date Date { get; set; }
 
@@ -43,8 +60,8 @@ namespace AIGames.Data
 			get
 			{
 				var res = "1/2";
-				/**/ if (Bot1.Score == 1) { res = "1-0"; }
-				else if (Bot2.Score == 1) { res = "0-1"; }
+				/**/ if (Outcome == Score.Win) { res = "1-0"; }
+				else if (Outcome == Score.Lose) { res = "0-1"; }
 				return String.Format("{0:yyyy-MM-dd} {1} - {2} : {3} {{{4}}}", 
 					Date, 
 					Bot1.Name, 
