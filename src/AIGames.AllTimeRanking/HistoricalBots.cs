@@ -1,7 +1,7 @@
 ﻿using AIGames.Configuration;
 using AIGames.Data;
+using Qowaiv;
 using Qowaiv.Statistics;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -104,7 +104,10 @@ namespace AIGames.AllTimeRanking
 				var done = new HashSet<string>();
 
 				var pos = 1;
-				foreach (var bot in this.Where(b => b.MatchCounts >= MinimumGameCount && !done.Contains(b.Name)))
+				foreach (var bot in this.Where(b =>
+					b.MatchCounts >= MinimumGameCount &&
+					b.LastGame >= Date.Today &&
+					!done.Contains(b.Name)))
 				{
 					writer.WriteLine("{0:000}\t{1}", pos++, bot);
 					done.Add(bot.Name);
