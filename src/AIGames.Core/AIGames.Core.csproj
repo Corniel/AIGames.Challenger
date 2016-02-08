@@ -64,6 +64,8 @@
     <Compile Include="Data\AIGameResult.cs" />
     <Compile Include="Data\AIGameResult.Bot.cs" />
     <Compile Include="Data\AIGameResults.cs" />
+    <Compile Include="Data\AIGamesBotOwner.cs" />
+    <Compile Include="Data\AIGamesBots.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebDriverWrapper.cs" />
   </ItemGroup>

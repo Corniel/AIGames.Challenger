@@ -12,7 +12,7 @@ namespace AIGames.Data
 {
 	[Serializable]
 	[DebuggerDisplay("{DebuggerDisplay}")]
-	public partial class AIGameResult
+	public partial class AIGameResult : IComparable<AIGameResult>
 	{
 		public enum Score
 		{
@@ -54,6 +54,11 @@ namespace AIGames.Data
 		/// <summary>Number of rounds.</summary>
 		public int Rounds { get; set; }
 
+		public int CompareTo(AIGameResult other)
+		{
+			return other.Date.CompareTo(Date);
+		}
+
 		[DebuggerBrowsable(DebuggerBrowsableState.Never), ExcludeFromCodeCoverage]
 		private string DebuggerDisplay
 		{
@@ -70,7 +75,6 @@ namespace AIGames.Data
 					Id);
 			}
 		}
-		
 
 		internal static AIGameResult FromRow(HtmlNode row)
 		{

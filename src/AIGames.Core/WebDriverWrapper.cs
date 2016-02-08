@@ -29,22 +29,25 @@ namespace AIGames
 			Driver.Url = competition.GetChallengeUrl(playerName).ToString();
 		}
 
-		/// <summary>Gets the game list as <see cref="HtmlAgilityPack.HtmlNode"/>.</summary>
-		/// <param name="competition"></param>
-		/// <param name="playerName"></param>
-		/// <param name="page"></param>
-		/// <returns></returns>
-		public HtmlNode GetGameListHtml(AIGamesCompetition competition, string playerName, int page)
+		public IEnumerable<AIGamesBot> GetHtmlLeaderboard(AIGamesCompetition competition)
 		{
 			if (competition == null) { throw new ArgumentNullException("competition"); }
-			if (String.IsNullOrEmpty(playerName)) { throw new ArgumentNullException("playerName"); }
-			Driver.Url = competition.GetGameListUrl(playerName, page).ToString();
-			 
+			Driver.Url = competition.GetLeaderboard().ToString();
+			
 			var document = new HtmlDocument();
 			document.LoadHtml(Driver.PageSource);
-			return document.DocumentNode.SelectSingleNode("//body");
-		}
 
+			var rows= document.DocumentNode.SelectNodes("//table[@id='leaderboard-table']/tbody/tr");
+			if (rows == null) { yield break; }
+			foreach (var row in rows)
+			{
+				var bot = AIGamesBot.FromRow(row);
+				if (bot != null)
+				{
+					yield return bot;
+				}
+			}
+		}
 		/// <summary>Gets the game list as <see cref="HtmlAgilityPack.HtmlNode"/>.</summary>
 		public IEnumerable<AIGameResult> GetGames(AIGamesCompetition competition)
 		{

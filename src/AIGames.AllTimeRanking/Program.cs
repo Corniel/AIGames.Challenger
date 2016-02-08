@@ -14,38 +14,50 @@ namespace AIGames.AllTimeRanking
 			
 			var sw = Stopwatch.StartNew();
 
-			var collection = new Dictionary<AIGamesCompetition, AIGameResults>();
+			var results = new Dictionary<AIGamesCompetition, AIGameResults>();
+			var bots = new Dictionary<AIGamesCompetition, AIGamesBots>();
 
 			foreach (var competition in AIGamesCompetitions.All)
 			{
-				collection[competition] = AIGameResults.Load(competition);
+				results[competition] = AIGameResults.Load(competition);
+				bots[competition] = AIGamesBots.Load(competition);
 			}
 
-			if (!skip) { Update(sw, collection); }
-
-			foreach (var kvp in collection)
+			if (!skip) 
 			{
-				var competition = kvp.Key;
-				var games = kvp.Value;
+				Update(sw, results, bots);
+			}
 
-				var bots = new HistoricalBots(competition.IsSymmetric);
-				bots.AddRange(games);
-				bots.ApplyRatings();
+			foreach (var comp in AIGamesCompetitions.All)
+			{
+				var ranking = Ranking.Create(bots[comp], results[comp], comp.IsSymmetric);
 
-				bots.Save(competition);
+				ranking.Process();
+
+				ranking.Save(comp);
+
+				bots[comp].Save(comp);
+				results[comp].Save(comp);
 			}
 		}
 
-		private static void Update(Stopwatch sw, Dictionary<AIGamesCompetition, AIGameResults> collection)
+		private static void Update(
+			Stopwatch sw,
+			Dictionary<AIGamesCompetition, AIGameResults> results,
+			Dictionary<AIGamesCompetition, AIGamesBots> bots)
 		{
 			using (var driver = WebDriverWrapper.GetChrome())
 			{
-				foreach (var kvp in collection)
+				foreach (var kvp in results)
 				{
 					var competition = kvp.Key;
 					var games = kvp.Value;
 
-					var count = games.Count;
+					var bs = bots[competition];
+
+					var gamesCount = games.Count;
+					var botsCount = bs.BotCount;
+					
 					foreach (var game in driver.GetGames(competition))
 					{
 						if (games.ContainsId(game))
@@ -59,11 +71,22 @@ namespace AIGames.AllTimeRanking
 					}
 					games.Save(competition);
 
-					Console.WriteLine(@"{0:mm\:ss\:f}  Saved {1:#,##0} new game results for {2}. Total: {3:#,##0}",
+					bs.DeactiveAll();
+
+					foreach (var bot in driver.GetHtmlLeaderboard(competition))
+					{
+						var bt = bs.AddOrUpdate(bot);
+						bt.Active = true;
+					}
+					bs.Save(competition);
+
+					Console.WriteLine(@"{0:mm\:ss\:f}  Saved {1:#,##0} new game results and {2:#,##0} bots for {3}. Results: {4:#,##0}, bots: {5:#,##0}",
 						sw.Elapsed,
-						games.Count - count,
+						games.Count - gamesCount,
+						bs.BotCount - botsCount,
 						competition.DisplayName,
-						games.Count);
+						games.Count,
+						bs.BotCount);
 				}
 			}
 		}

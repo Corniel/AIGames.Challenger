@@ -8,7 +8,7 @@ namespace AIGames.Data
 	public partial class AIGameResult
 	{
 		[Serializable, DebuggerDisplay("{DebuggerDisplay}")]
-		public class Bot
+		public class Bot : IEquatable<Bot>
 		{
 			public Bot()
 			{
@@ -29,6 +29,20 @@ namespace AIGames.Data
 
 			[DebuggerBrowsable(DebuggerBrowsableState.Never), ExcludeFromCodeCoverage]
 			private string DebuggerDisplay { get { return String.Format("Bot: {0}{2} v{1}", Name, Version, IsMyBot ? "*" : ""); } }
+
+			public override int GetHashCode()
+			{
+				return (Name ?? string.Empty).GetHashCode() ^ Version;
+			}
+
+			public override bool Equals(object obj) { return Equals(obj as Bot); }
+
+			public bool Equals(Bot other)
+			{
+				return other != null &&
+					Name == other.Name &&
+					Version == other.Version;
+			}
 		}
 	}
 }

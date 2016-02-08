@@ -5,6 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Qowaiv;
+using System.Xml.Serialization;
 
 namespace AIGames.Data
 {
@@ -19,24 +20,35 @@ namespace AIGames.Data
 		}
 
 		/// <summary>The GUID of the bot.</summary>
+		[XmlAttribute("id")]
 		public String Id { get; set; }
 		
 		/// <summary>The name of the bot.</summary>
 		/// <remarks>
 		/// The name may change over time.
 		/// </remarks>
+		[XmlAttribute("name")]
 		public String Name { get; set; }
 
 		/// <summary>The current revision of the bot.</summary>
+		[XmlAttribute("v")]
 		public int Revision { get; set; }
+
+		/// <summary>True if the bot is active.</summary>
+		[XmlAttribute("a")]
+		public bool Active { get; set; }
 
 		/// <summary>The owner of the bot.</summary>
 		public String Owner { get; set; }
+
+		[XmlAttribute("elo"), DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public double RatingMapper { get { return (double)Rating; } set { Rating = value; } }
 
 		/// <summary>The rating of the bot.</summary>
 		/// <remarks>
 		/// The initial rating is 1400.
 		/// </remarks>
+		[XmlIgnore]
 		public Elo Rating { get; set; }
 
 		/// <summary>Orders the bots by rating descending.</summary>
