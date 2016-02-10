@@ -18,12 +18,16 @@ namespace AIGames.Data
 		[XmlAttribute("Name")]
 		public string Name { get; set; }
 
+		/// <summary>The GUID of the owner.</summary>
+		[XmlAttribute("id")]
+		public string Id { get; set; }
+
 		[XmlElement("Bot")]
 		public List<AIGamesBot> Bots { get; set; }
 
 		public AIGamesBot AddOrUpdate(AIGamesBot bot)
 		{
-			var match = Bots.FirstOrDefault(b => b.Name == bot.Name && b.Revision == b.Revision);
+			var match = Bots.FirstOrDefault(b => b.Name == bot.Name && b.Revision == bot.Revision);
 			if (match == null)
 			{
 				match = new AIGamesBot();
@@ -31,10 +35,15 @@ namespace AIGames.Data
 				match.Revision = bot.Revision;
 				Bots.Add(match);
 			}
-			match.Id = bot.Id;
+			if (string.IsNullOrEmpty(Id))
+			{
+				Id = bot.Id;
+			}
+
 			match.Rating = bot.Rating;
 			// Don't store double.
 			match.Owner = null;
+			match.Id = null;
 
 			return match;
 		}

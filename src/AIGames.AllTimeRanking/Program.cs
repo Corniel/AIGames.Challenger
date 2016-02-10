@@ -34,6 +34,10 @@ namespace AIGames.AllTimeRanking
 
 				ranking.Process();
 
+				foreach (var owner in bots[comp])
+				{
+					owner.Bots.Sort();
+				}
 				ranking.Save(comp);
 
 				bots[comp].Save(comp);

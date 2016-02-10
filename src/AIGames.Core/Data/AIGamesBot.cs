@@ -21,7 +21,7 @@ namespace AIGames.Data
 
 		/// <summary>The GUID of the bot.</summary>
 		[XmlAttribute("id")]
-		public String Id { get; set; }
+		public string Id { get; set; }
 		
 		/// <summary>The name of the bot.</summary>
 		/// <remarks>
