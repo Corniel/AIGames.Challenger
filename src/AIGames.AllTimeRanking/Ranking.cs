@@ -32,7 +32,7 @@ namespace AIGames.AllTimeRanking
 
 		public void Process()
 		{
-			for (var k = 32; k >= 0.5; k /= 2)
+			for (var k = 64; k >= 0.5; k /= 2)
 			{
 				foreach (var item in this)
 				{

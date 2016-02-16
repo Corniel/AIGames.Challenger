@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace AIGames.Data
@@ -39,8 +37,6 @@ namespace AIGames.Data
 			{
 				Id = bot.Id;
 			}
-
-			match.Rating = bot.Rating;
 			// Don't store double.
 			match.Owner = null;
 			match.Id = null;
