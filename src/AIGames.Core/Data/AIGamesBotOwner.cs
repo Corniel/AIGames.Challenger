@@ -23,7 +23,10 @@ namespace AIGames.Data
 
 		public AIGamesBot AddOrUpdate(AIGamesBot bot)
 		{
-			var match = Bots.FirstOrDefault(b => b.Name == bot.Name && b.Revision == b.Revision);
+			var match = Bots.FirstOrDefault(b => 
+				b.Name == bot.Name &&
+				b.Revision == bot.Revision);
+
 			if (match == null)
 			{
 				match = new AIGamesBot();
