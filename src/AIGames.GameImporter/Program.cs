@@ -5,9 +5,9 @@ using System.Diagnostics;
 
 namespace AIGames.GameImporter
 {
-	class Program
+	public class Program
 	{
-		static void Main(string[] args)
+		public static void Main()
 		{
 			using (var driver = WebDriverWrapper.GetChrome())
 			{

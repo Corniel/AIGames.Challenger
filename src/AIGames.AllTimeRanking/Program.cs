@@ -2,12 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using Qowaiv.Statistics;
 
 namespace AIGames.AllTimeRanking
 {
-	class Program
+	public static class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			bool skip = false;
 			skip = args.Length > 0 && bool.TryParse(args[0], out skip) && skip;
@@ -32,8 +34,22 @@ namespace AIGames.AllTimeRanking
 			{
 				var ranking = Ranking.Create(bots[comp], results[comp], comp.IsSymmetric);
 
+				var all = bots[comp].SelectMany(owner => owner.Bots).ToList();
+				var avg_pre = all.Where(a => a.Active).Select(bot => bot.Rating).Avarage();
 				ranking.Process();
+				var avg_pos = all.Select(bot => bot.Rating).Avarage();
 
+				var delta = avg_pos - avg_pre;
+
+				foreach (var bot in all)
+				{
+					bot.Rating -= delta;
+				}
+
+				foreach (var owner in bots[comp])
+				{
+					owner.Bots.Sort();
+				}
 				ranking.Save(comp);
 
 				bots[comp].Save(comp);
@@ -73,7 +89,8 @@ namespace AIGames.AllTimeRanking
 
 					bs.DeactiveAll();
 
-					foreach (var bot in driver.GetHtmlLeaderboard(competition))
+					var all = driver.GetHtmlLeaderboard(competition).ToList();
+					foreach (var bot in all)
 					{
 						var bt = bs.AddOrUpdate(bot);
 						bt.Active = true;

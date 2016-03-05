@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace AIGames.Data
@@ -17,6 +15,10 @@ namespace AIGames.Data
 
 		[XmlAttribute("Name")]
 		public string Name { get; set; }
+
+		/// <summary>The GUID of the owner.</summary>
+		[XmlAttribute("id")]
+		public string Id { get; set; }
 
 		[XmlElement("Bot")]
 		public List<AIGamesBot> Bots { get; set; }
@@ -34,10 +36,13 @@ namespace AIGames.Data
 				match.Revision = bot.Revision;
 				Bots.Add(match);
 			}
-			match.Id = bot.Id;
-			match.Rating = bot.Rating;
+			if (string.IsNullOrEmpty(Id))
+			{
+				Id = bot.Id;
+			}
 			// Don't store double.
 			match.Owner = null;
+			match.Id = null;
 
 			return match;
 		}
