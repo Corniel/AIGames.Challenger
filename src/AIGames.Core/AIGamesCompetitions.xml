@@ -7,4 +7,5 @@
 	<AIGamesCompetition name="Block Battle" key="ai-block-battle" symmetric="true" />
 	<AIGamesCompetition name="Four In A Row" key="four-in-a-row" />
 	<AIGamesCompetition name="Ultimate Tic-tac-toe" key="ultimate-tic-tac-toe" />
+	<AIGamesCompetition name="Go" key="go" />
 </AIGamesCompetitions>
