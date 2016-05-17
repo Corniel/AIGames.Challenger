@@ -16,6 +16,17 @@ namespace AIGames.AllTimeRanking
 
 		public bool IsSymmetric { get; set; }
 
+		public List<AIGamesBot> Bots
+		{
+			get
+			{
+				return this
+					.Select(item => item.Bot)
+					.OrderByDescending(bot => bot.Revision)
+					.ToList();
+			}
+		}
+
 		public RankingItem GetOrAdd(AIGamesBot bot)
 		{
 			var item = this.FirstOrDefault(i => i.Bot == bot);
@@ -36,7 +47,26 @@ namespace AIGames.AllTimeRanking
 			{
 				foreach (var item in this)
 				{
-					foreach (var results in item.Opponents)
+					var rs = item.Opponents.ToList();
+					
+					var bots = Bots
+						.Where(b => b.Name == item.Bot.Name && b.Revision < item.Bot.Revision)
+						.OrderByDescending(b => b.Revision)
+						.ToList();
+					foreach (var pre in bots)
+					{
+						var total = rs.Sum(r => r.Count);
+						var wins = rs.Sum(r => r.Wins);
+						var loss = rs.Sum(r => r.Loses);
+						if (total > 50 && wins > 0 & loss > 0)
+						{
+							break;
+						}
+						var oppos = this.FirstOrDefault(i => i.Bot == pre).Opponents;
+						rs.AddRange(oppos);
+					}
+
+					foreach (var results in rs)
 					{
 						var z = Elo.GetZScore(item.Rating, results.Opponent.Rating);
 						var s = (double)results.Score;
